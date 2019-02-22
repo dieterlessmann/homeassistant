@@ -1,0 +1,61 @@
+# Solar panels alert when generating over 500W
+
+- alias: Solar panels are generating over 500W
+  initial_state: true
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.solaredge_current_power
+      above: 500
+  action:
+    - service: media_player.alexa_tts
+      data_template:
+        entity_id: media_player.living_room
+        message: The solar panels are currently generating {{ states("sensor.solaredge_current_power") }} watts per hour. 
+        #message: The solar panels are currently generating {{ states("sensor.solaredge_current_power") }} watts per hour. The weather is currently {{ states("sensor.dark_sky_minutely_summary") }} and then forecast to be {{ states("sensor.dark_sky_summary_0") }}.
+
+
+# Octoprint finish announcement
+
+- alias: Octoprint finished printing
+  initial_state: true
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.octoprint_job_percentage
+      above: 99
+  action:
+    - service: media_player.alexa_tts
+      data_template:
+        entity_id: media_player.living_room
+        message: The 3D printer has finished printing
+
+# Roborock finished cleaning
+
+- alias: roborock finished cleaning
+  initial_state: true
+  trigger:
+    - platform: state
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      from: 'cleaning'
+      to: 'returning to dock'
+  action:
+    - service: media_player.alexa_tts
+      data_template:
+        entity_id: media_player.bedroom
+        message: The vacume cleaner has finished cleaning
+
+# Full moon put out clystals
+
+- alias: Full moon put out crystals
+  initial_state: true
+  trigger:
+    - platform: time
+      at: '20:30:00'
+  condition:
+    - condition: state
+      entity_id: sensor.moon
+      state: full_moon
+  action:
+    - service: media_player.alexa_tts
+      data_template:
+        entity_id: media_player.bedroom
+        message: It's a full moon, put out the crystals for recharging

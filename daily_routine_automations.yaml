@@ -1,0 +1,70 @@
+# Alarm clock set with input boolean
+
+- alias: Alarm Clock bedroom
+  initial_state: true
+  trigger:
+    platform: template
+    value_template: '{{ states(''sensor.time'') == (states.input_datetime.only_time.attributes.timestamp
+      | int | timestamp_custom(''%H:%M'', False)) }}'
+  condition:
+    condition: state
+    entity_id: input_boolean.morning_alarm
+    state: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: light.bedroom_wardrobe
+  - service: homeassistant.turn_on
+    entity_id: switch.bathroom_glass
+  - delay: 00:01
+  - service: media_player.alexa_tts
+    data_template:
+      entity_id: media_player.bedroom
+      message: <{{ ["Wake up Boo and Boo", "Rise and Shine little lovebirds", "It's time to get up and get busy, Chop Chop", "Are you still lying in bed, I can't believe it. Get up already" ] | random }}
+  - delay: 00:00:10 
+  - service: media_player.alexa_tts
+    data_template:   
+      entity_id: media_player.bedroom
+      message: Currently the bedroom is {{ states("sensor.bedroom_temperature_adjusted") }} degrees. The outside temperature is {{ states("sensor.dark_sky_temperature") }}
+  - delay: 00:03:00
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.bedroom
+      media_content_id: BBC News
+      media_content_type: TUNEIN
+  - delay: 00:05
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.livingroom_pi
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.bathroom_pir
+  id: a730503d47c1476c8cbec1c36d31e580
+  
+
+# Morning downstairs switch off
+
+- alias: Morning Downstairs switch off
+  initial_state: true
+  trigger:
+    platform: time
+    at: '12:00:00'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.bedroom_wardrobe
+  
+  # Night switch off
+
+#- alias: Night Sleeptime
+#  initial_state: true
+#  trigger:
+#    platform: state
+#    entity_id: sensor.dieter_phone_battery
+#    state: 'charging'
+#  action:
+#  - service: homeassistant.turn_off
+#    entity_id: switch.bathroom_glass
+#  - service: homeassistant.turn_off
+#    entity_id: group.all_lights
+#  - service: homeassistant.turn_off
+#    entity_id: switch.sound_system
+#  - service: homeassistant.turn_off
+#    entity_id: switch.orange_cupboard
+#  id: caea47f04a64423595c933a2426eb787
