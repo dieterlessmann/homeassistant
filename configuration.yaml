@@ -1,0 +1,91 @@
+homeassistant:
+  name: Our Amazing Home
+  latitude: !secret hass_latitude
+  longitude: !secret hass_longitude
+  elevation: 60
+  unit_system: metric
+  time_zone: Europe/London
+  customize: !include customize.yaml
+
+system_health: 
+config:
+conversation:
+discovery:
+frontend:
+#http:
+updater:
+history:
+logbook:
+map:
+sun:
+cloud:
+hassio:
+alexa:
+lovelace:
+  mode: yaml
+  
+
+# Include
+group: !include groups.yaml
+automation: !include_dir_merge_list automations
+script: !include scripts.yaml
+input_boolean: !include input_boolean.yaml
+input_select: !include input_selects.yaml
+sensor: !include sensors.yaml
+switch: !include switches.yaml
+light: !include lights.yaml
+binary_sensor: !include binary_sensors.yaml
+camera: !include cameras.yaml
+zone: !include zones.yaml
+device_tracker: !include device_trackers.yaml
+panel_iframe: !include panel_iframes.yaml
+person: !include persons.yaml
+
+
+# MQTT service
+mqtt:
+  broker: core-mosquitto
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+# Weather
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api
+    mode: daily
+
+  - platform: metoffice
+    api_key: !secret met_office_api
+
+# Media Player
+media_player:
+  - platform: alexa
+    email: !secret alexa_email
+    password: !secret alexa_password
+    url: "amazon.co.uk"
+
+# Xiaomi Roborock
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.1.107
+    token: 385545536448314b466943553171434c
+
+# Octoprint
+octoprint:
+  host: 192.168.1.26
+  api_key: !secret octoprint_api
+  bed: false
+  number_of_tools: 0
+    
+# Date Time and Alarms
+input_datetime:
+  only_time:
+    name: Select Time
+    has_date: false
+    has_time: true
+
+#logger:
+#   default: info
+#   logs:
+#     homeassistant.components.sensor.solaredge: critical
+
