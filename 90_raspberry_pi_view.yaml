@@ -1,0 +1,16 @@
+# Raspberry monitoring         
+
+title: System
+icon: mdi:harddisk
+path: home
+cards:
+  - type: entities
+    title: Raspberry pi
+    show_header_toggle: false
+    entities:
+      - sensor.uptime
+      - sensor.processor_use
+      - sensor.memory_use_percent
+      - sensor.memory_use
+      - sensor.memory_free
+      - sensor.disk_use_percent_home

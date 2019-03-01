@@ -1,0 +1,81 @@
+# Upstairs view
+
+title: Upstairs
+icon: mdi:sofa
+cards:
+
+
+# Livingroom
+
+  - type: entities
+    title: Livingroom
+    show_header_toggle: true
+    entities:
+      - switch.orange_cupboard
+      - light.sofa
+      - light.office
+      - switch.diffuser
+      - sensor.sofa_humidity
+      - sensor.blinds_livingroom_lux
+      - binary_sensor.livingroom_pir
+      #- sensor.livingroom_temperature_actual
+      - sensor.sofa_temperature_adjusted
+
+
+ # Blinds
+
+  - type: entities
+    title: Blinds
+    show_header_toggle: false
+    entities:
+      - script.livingroom_blinds_up
+      - script.livingroom_blinds_stop
+      - script.livingroom_blinds_down
+      - script.kitchen_blinds_up
+      - script.kitchen_blinds_stop
+      - script.kitchen_blinds_down
+
+
+# Black bathroom
+
+  - type: entities
+    title: Black Bathroom
+    show_header_toggle: true
+    entities:
+      - light.bathroom_floorlight
+      - light.bathroom_skylight
+      - sensor.black_bathroom_temperature_adjusted
+      - sensor.black_bathroom_humidity
+      #- binary_sensor.bathroom_pir
+
+
+# Kitchen
+
+  - type: entities
+    title: Kitchen
+    show_header_toggle: true
+    entities:
+      - light.kitchen
+     # - sensor.kitchen_temperature
+     # - sensor.kitchen_humidity
+     #- binary_sensor.extractor_fan
+     #- input_boolean.extractor_fan_dummy
+      - sensor.blinds_kitchen_lux
+      - sensor.kitchen_fridge_temperature
+      - sensor.kitchen_fridge_humidity
+
+
+# Automations
+
+  - type: entities
+    title: Automations
+    show_header_toggle: false
+    entities:
+      - input_boolean.bathroom_pir
+      - input_boolean.livingroom_pir
+      - input_boolean.blinds_livingroom
+      - input_boolean.blinds_kitchen
+      
+
+
+  

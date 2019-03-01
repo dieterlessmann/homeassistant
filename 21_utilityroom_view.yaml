@@ -1,0 +1,93 @@
+# Utilityroom
+
+title: Utilityroom
+icon: mdi:wrench
+cards:
+
+
+# Ventilation
+
+  - type: entities
+    title: MVHR
+    show_header_toggle: false
+    entities:
+      - switch.ventilation
+      
+
+# Wahing Machine
+
+  - type: entities
+    title: Washing Machine
+    show_header_toggle: false
+    entities:
+       - sensor.washing_machine_watts
+       - sensor.washing_machine_today_kwh
+       - sensor.washing_machine_total_kwh
+       - sensor.washing_machine_volts
+       - sensor.washing_machine_amps
+       - switch.washing_machine
+       - input_boolean.washing_machine_finished
+       - input_select.washing_machine_status
+       #- input_select.washing_machine_status.last_changed
+
+
+# Xiaomi Vacuum 
+
+  - type: entities
+    title: Xiaomi Vacuum
+    show_header_toggle: false
+    entities:
+      - vacuum.xiaomi_vacuum_cleaner
+
+
+# Octoprint
+
+  - type: entities
+    title: Octoprint
+    show_header_toggle: false
+    entities:
+      - switch.3d_printer_power
+      - sensor.octoprint_current_state
+      - sensor.octoprint_job_percentage
+      - sensor.octoprint_time_elapsed
+      - sensor.octoprint_time_remaining
+      #- sensor.octoprint_actual_tool0_temp
+      #- sensor.octoprint_actual_bed_temp
+      #- sensor.octoprint_target_tool0_temp
+      #- sensor.octoprint_target_bed_temp
+      - input_boolean.3d_printer_finished
+
+
+# Solar panels
+
+  - type: entities
+    title: Solar Panels
+    show_header_toggle: false
+    entities:  
+      - sensor.solaredge_current_power
+      - sensor.solaredge_energy_today
+
+
+# You've got mail
+
+  - type: entities
+    title: Mailbox
+    show_header_toggle: false
+    entities:
+      - input_boolean.you_got_mail
+
+
+# Show alerts
+
+  - type: entity-filter
+    entities: 
+      - input_boolean.you_got_mail
+      - input_boolean.washing_machine_finished
+      - input_boolean.3d_printer_finished
+    state_filter:
+      - 'on'
+    card: 
+      type: glance
+      title: Alerts
+      show_state: false
+      show_name: false

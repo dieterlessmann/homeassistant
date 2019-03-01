@@ -1,0 +1,33 @@
+# Downstairs view
+title: Downstairs
+icon: mdi:bed-empty
+cards:
+  - type: entities
+    title: Bedroom 
+    show_header_toggle: false
+    entities:
+      - switch.ventilation
+      - light.bedroom_wardrobe
+  - type: entities
+    title: Bathroom
+    show_header_toggle: false
+    entities:
+      - switch.bathroom_glass
+      - sensor.bedroom_temperature_adjusted
+      - sensor.bedroom_humidity
+      #- binary_sensor.bedroom_pir
+  - type: entities
+    title: Bedroom TV
+    show_header_toggle: false
+    entities:
+      - switch.lg_tv
+      - switch.android_tv
+      - switch.onkyo_power
+      - switch.tv_speakers
+      - input_boolean.tv
+  - type: entities
+    title: Alarm Clock
+    show_header_toggle: false
+    entities:
+      - input_boolean.morning_alarm
+      - input_datetime.only_time

@@ -1,0 +1,436 @@
+# Floorplan view
+title: Floorplan
+icon: mdi:home-assistant
+panel: true 
+cards: 
+  - type: picture-elements
+    image: /local/floorplan/floorplan_vertical_1.jpg
+    elements: 
+
+      # Black bathroom
+
+      - type: state-label
+        entity: sensor.black_bathroom_temperature_adjusted
+        style:
+          top: 6%
+          left: 12%
+          font-size: 10px
+      - type: state-label
+        entity: sensor.black_bathroom_humidity
+        style:
+          top: 7%
+          left: 12%
+          font-size: 10px
+      - type: state-icon
+        entity: light.bathroom_floorlight
+        title: Bathroom floorlight
+        tap_action:
+          action: toggle
+        style:
+          top: 5%
+          left: 5%
+          --iron-icon-height: 30px
+          --iron-icon-width: 30px 
+      - type: state-icon
+        entity: light.bathroom_skylight
+        title: Bathroom Skylight
+        tap_action:
+        action: toggle
+        style:
+          top: 10%
+          left: 2.5%
+          --iron-icon-height: 30px
+          --iron-icon-width: 30px 
+      - type: state-icon
+        entity: input_boolean.bathroom_pir
+        title: Bathroom PIR
+        tap_action:
+          action: toggle
+        style:
+          top: 11%
+          left: 13%
+          --iron-icon-height: 30px
+          --iron-icon-width: 30px 
+
+
+      # Utility
+
+      - type: state-icon
+        entity: switch.ventilation
+        title: Ventilation
+        tap_action:
+          action: toggle
+        style:
+          top: 3.5%
+          left: 19%
+          --iron-icon-height: 30px
+          --iron-icon-width: 30px
+
+      - type: state-icon
+        entity: switch.3d_printer_power
+        title: Printer Power
+        tap_action:
+          action: toggle
+        style:
+          top: 3.5%
+          left: 31%
+          --iron-icon-height: 30px
+          --iron-icon-width: 30px
+
+      - type: state-icon
+        entity: vacuum.xiaomi_vacuum_cleaner
+        title: Xiaomi Roborock
+        tap_action:
+          action: toggle
+        style:
+          top: 10%
+          left: 33%
+          --iron-icon-height: 30px
+          --iron-icon-width: 30px
+
+
+      # Drive
+      
+      - type: state-icon
+        entity: sensor.moon
+        title: Moon phase
+        style:
+          top: 2%
+          left: 90%
+          --iron-icon-height: 30px
+          --iron-icon-width: 30px
+          
+      - type: state-label
+        entity: sensor.moon
+        style:
+          top: 4%
+          left: 90%
+          font-size: 15px
+          font-type: bold
+
+      - type: state-icon
+        entity: switch.pedestrian_gate
+        title: Pedestrian Gate
+        tap_action:
+          action: toggle
+        style:
+          top: 3%
+          left: 77%
+          --iron-icon-height: 30px
+          --iron-icon-width: 30px
+
+      - type: state-icon
+        entity: switch.car_gate
+        title: Car Gate
+        tap_action:
+          action: toggle
+        style:
+          top: 7%
+          left: 82%
+          --iron-icon-height: 30px
+          --iron-icon-width: 30px
+
+      - type: state-icon
+        entity: switch.hold_gate
+        title: Hold Gate
+        tap_action:
+          action: toggle
+        style:
+          top: 12%
+          left: 82%
+          --iron-icon-height: 32px
+          --iron-icon-width: 32px
+
+      - type: state-label
+        entity: sensor.dark_sky_temperature
+        #prefix: "Outside Temp =  "
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/2
+        style:
+          top: 3%
+          left: 53%
+          font-size: 15px
+          font-type: bold
+
+      - type: state-label
+        entity:  sensor.dark_sky_summary
+        #prefix: "Current condition =  "
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace/2
+        style:
+          top: 5%
+          left: 53%
+          font-size: 15px
+          font-type: bold
+
+
+      # Livingroom
+      - type: state-label
+        entity: sensor.sofa_temperature_adjusted
+        style:
+          top: 23%
+          left: 55%
+          font-size: 10px
+
+      - type: state-label
+        entity: sensor.sofa_humidity
+        style:
+          top: 24%
+          left: 55%
+          font-size: 10px
+
+      - type: state-icon
+        entity: light.sofa
+        title: Sofa light
+        tap_action:
+          action: toggle
+        style:
+          top: 30%
+          left: 74%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+
+      - type: state-icon
+        entity: script.livingroom_blinds_up
+        title: Livingroom Blinds up
+        tap_action:
+          action: toggle
+        style:
+          top: 18%
+          left: 74%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+
+      - type: state-icon
+        entity: script.livingroom_blinds_stop
+        title: Livingroom Blinds stop
+        tap_action:
+          action: toggle
+        style:
+          top: 21%
+          left: 74%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+
+      - type: state-icon
+        entity: script.livingroom_blinds_down
+        title: Livingroom Blinds up
+        tap_action:
+          action: toggle
+        style:
+          top: 24%
+          left: 74%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+
+      - type: state-icon
+        entity: script.kitchen_blinds_up
+        title: Livingroom Blinds up
+        tap_action:
+          action: toggle
+        style:
+          top: 37%
+          left: 34%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+
+      - type: state-icon
+        entity: script.kitchen_blinds_stop
+        title: Livingroom Blinds stop
+        tap_action:
+          action: toggle
+        style:
+          top: 40%
+          left: 34%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+
+      - type: state-icon
+        entity: script.kitchen_blinds_down
+        title: Livingroom Blinds up
+        tap_action:
+          action: toggle
+        style:
+          top: 43%
+          left: 34%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+
+      - type: state-icon
+        entity: input_boolean.livingroom_pir
+        title: Bathroom PIR
+        tap_action:
+          action: toggle
+        style:
+          top: 35%
+          left: 56%
+          --iron-icon-height: 30px
+          --iron-icon-width: 30px 
+            
+      - type: state-icon
+        entity: light.office
+        title: Office light
+        tap_action:
+          action: toggle
+        style:
+          top: 20%
+          left: 32%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+
+      - type: state-icon
+        entity: switch.sound_system
+        title: Sound System
+        tap_action:
+          action: toggle
+        style:
+          top: 46%
+          left: 78%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+
+      - type: state-icon
+        entity: switch.orange_cupboard
+        title: Orange Cupboard
+        tap_action:
+          action: toggle
+        style:
+          top: 46%
+          left: 70%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+      - type: state-icon
+        entity: light.kitchen
+        title: Kitchen
+        tap_action:
+          action: toggle
+        style:
+          top: 46%
+          left: 44%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+      - type: state-icon
+        entity: switch.diffuser
+        title: Diffuser
+        tap_action:
+          action: toggle
+        style:
+          top: 28%
+          left: 84%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+
+
+      # Basement
+      - type: state-label
+        entity: sensor.bedroom_temperature_adjusted
+        style:
+          top: 90%
+          left: 55%
+          font-size: 10px
+      - type: state-label
+        entity: sensor.bedroom_humidity
+        style:
+          top: 93%
+          left: 55%
+          font-size: 10px
+      - type: state-icon
+        entity: light.bedroom_wardrobe
+        title: Wardrobe
+        tap_action:
+          action: toggle
+        style:
+          top: 95%
+          left: 74%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+      - type: state-icon
+        entity: switch.bathroom_glass
+        title: Bathroom Glass
+        tap_action:
+          action: toggle
+        style:
+          top: 88%
+          left: 44%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+      - type: state-icon
+        entity: input_boolean.tv
+        title: TV
+        icon: mdi:television
+        tap_action:
+          action: toggle
+        style:
+          top: 86%
+          left: 64%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px
+      - type: state-icon
+        entity: input_boolean.morning_alarm
+        title: Alarm
+        tap_action:
+          action: toggle
+        style:
+          top: 86%
+          left: 85%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px  
+      - type: state-label
+        entity: input_datetime.only_time
+        title: Alarm
+        style:
+          top: 88%
+          left: 85%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px    
+          
+       # Side panel
+      - type: state-icon
+        entity: device_tracker.google_maps_108081316122721777847
+        title: Dieter
+        style:
+          top: 20%
+          left: 15%
+      - type: state-label
+        entity: sensor.dieter_phone_battery
+        prefix: "Battery level "
+        style:
+          top: 23%
+          left: 15%
+      
+      - type: state-icon
+        entity: device_tracker.google_maps_laramasters11_gmail_com
+        title: Lara
+        style:
+          top: 20%
+          left: 5%
+
+      - type: state-icon
+        entity: device_tracker.galaxy_note8
+        #title: 
+        style:
+          top: 20%
+          left: 25%
+
+    #  - type: custom:popup-card
+    #    entity: device_tracker.google_maps_108081316122721777847
+    #    title: Dieter
+    #    card:
+    #      type: entities
+    #      entities:
+    #        - entity: device_tracker.google_maps_108081316122721777847_battery_level
+    #          type: custom:secondaryinfo-entity-row
+    #          secondary_info: "[[ device_tracker.google_maps_108081316122721777847_battery_state.state ]]"
+      # Show alerts
+
+      - type: state-label
+        entity: sensor.solaredge_current_power
+        prefix: "Solar Panels =  "
+        style:
+          top: 30%
+          left: 10%
+          --iron-icon-height: 42px
+          --iron-icon-width: 42px    
+

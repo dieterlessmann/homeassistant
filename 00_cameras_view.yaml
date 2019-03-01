@@ -1,0 +1,51 @@
+# Cameras view
+title: Cameras
+icon: mdi:cctv
+
+
+# Gate control
+
+cards:  
+  - type: entity-button
+    entity: switch.pedestrian_gate
+    tap_action: 
+      action: toggle
+  - type: horizontal-stack
+    cards:
+      - type: entity-button
+        entity: switch.car_gate
+        tap_action: 
+          action: toggle
+      - type: entity-button
+        entity: switch.hold_gate
+        tap_action: 
+          action: toggle
+  
+# Show alerts
+
+  - type: entity-filter
+    entities: 
+      - input_boolean.you_got_mail
+      - input_boolean.washing_machine_finished
+      - input_boolean.3d_printer_finished
+    state_filter:
+      - 'on'
+    card: 
+      type: glance
+      #title: Alert
+      show_state: false
+      show_name: false
+
+
+# Cameras
+
+  - type: iframe
+    url: "http://192.168.1.12/picture/1/frame/"
+    aspect_ratio: 125%
+  - type: iframe
+    url: "http://192.168.1.13/picture/1/frame/"
+    aspect_ratio: 125%
+  - type: iframe
+    url: "http://192.168.1.14/picture/1/frame/"
+    aspect_ratio: 125%
+                

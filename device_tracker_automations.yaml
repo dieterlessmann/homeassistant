@@ -1,0 +1,52 @@
+# Gate opening on entering home zone
+
+- alias: Gate opening on entering home zone 
+  initial_state: true
+  trigger:
+    platform: zone
+    event: enter
+    zone: zone.home
+    entity_id: device_tracker.google_maps_108081316122721777847
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.car_gate
+  - service: homeassistant.turn_on
+    entity_id: switch.hold_gate
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.arrive_home
+
+  
+# Release hold gate
+
+- alias: Release gate hold again
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: device_tracker.dieter_mia2
+    from: 'not_home'
+    to: 'home'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.hold_gate
+  
+
+# Welcome home greeting
+
+- alias: welcome home greeting
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.livingroom_pir
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: input_boolean.arrive_home_dummy
+    state: 'on'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: script.dieter_arrive_home
+  - service: homeassistant.turn_off
+    entity_id: input_boolean.arrive_home  
+
+

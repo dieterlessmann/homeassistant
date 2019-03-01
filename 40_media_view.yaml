@@ -1,0 +1,38 @@
+# Media view
+title: Media
+icon: mdi:music
+cards:
+  - type: entities
+    title: Rotel
+    show_header_toggle: false
+    entities:
+      - switch.sound_system
+      - switch.amplifier_power
+      - script.rotel_bluetooth
+      - script.rotel_alexa
+      - script.rotel_tv
+      - script.rotel_tuner
+      - script.rotel_volume_up
+      - script.rotel_volume_down
+  - type: entities
+    title: Downstairs Speakers
+    show_header_toggle: true
+    entities:
+      - switch.bedroom_speakers
+      - switch.physioroom_speakers
+  - type: media-control
+    entity: media_player.bedroom
+  - type: media-control
+    entity: media_player.living_room
+  - type: media-control
+    entity: media_player.everywhere
+  - type: media-control
+    entity: media_player.bathroom
+  - type: entities
+    title: Media Player Requests
+    show_header_toggle: true
+    entities:
+      - input_boolean.alexa_bbc1
+      - input_boolean.alexa_bbcradio6
+      - input_boolean.alexa_meditation_radio
+      - input_boolean.alexa_groove_salad
